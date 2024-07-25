@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
-function App() {
+import Table from './Table';
+
+function App({ articles }) {
+  const [sortedArticles, setSortedArticles] = useState(articles);
+
+  const sortBy = action => {
+    if (action === 'views') {
+      articles.sort((a, b) => b.views - a.views);
+    } else if (action === 'date') {
+      articles.sort((a, b) => new Date(b.date) - new Date(a.date));
+    }
+    setSortedArticles(() => [...articles]);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+     <button
+      
+          onClick={() => sortBy('date')}
         >
-          Learn React
-        </a>
-      </header>
+             Sort By Date
+        </button>
+        <button
+       
+          onClick={() => sortBy('views')}
+        >
+         Sort By Views
+        </button>
+    
+      <Table articles={sortedArticles} />
     </div>
   );
 }

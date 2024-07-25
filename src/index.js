@@ -1,17 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
+import ReactDOM from 'react-dom';
+
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const DATA =[
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+  { date: "2022-09-01", views: 100, article: "Article 1" },
+
+  { date: "2023-09-01", views: 100, article: "Article 1" },
+
+  { date: "2023-09-02", views: 150, article: "Article 2" },
+
+  { date: "2023-09-02", views: 120, article: "Article 3" },
+
+  { date: "2020-09-03", views: 200, article: "Article 4" }
+
+];
+ReactDOM.render(<App articles={DATA} />, document.getElementById('root'));
